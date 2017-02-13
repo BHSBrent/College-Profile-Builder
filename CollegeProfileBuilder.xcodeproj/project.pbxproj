@@ -13,6 +13,7 @@
 		61546F261E51FB52002F9369 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61546F241E51FB52002F9369 /* Main.storyboard */; };
 		61546F281E51FB52002F9369 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61546F271E51FB52002F9369 /* Assets.xcassets */; };
 		61546F2B1E51FB52002F9369 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61546F291E51FB52002F9369 /* LaunchScreen.storyboard */; };
+		61546F331E520754002F9369 /* Colleges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61546F321E520754002F9369 /* Colleges.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		61546F271E51FB52002F9369 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61546F2A1E51FB52002F9369 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61546F2C1E51FB52002F9369 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61546F321E520754002F9369 /* Colleges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colleges.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				61546F271E51FB52002F9369 /* Assets.xcassets */,
 				61546F291E51FB52002F9369 /* LaunchScreen.storyboard */,
 				61546F2C1E51FB52002F9369 /* Info.plist */,
+				61546F321E520754002F9369 /* Colleges.swift */,
 			);
 			path = CollegeProfileBuilder;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				61546F231E51FB52002F9369 /* DetailViewController.swift in Sources */,
 				61546F211E51FB52002F9369 /* MasterViewController.swift in Sources */,
 				61546F1F1E51FB52002F9369 /* AppDelegate.swift in Sources */,
+				61546F331E520754002F9369 /* Colleges.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
