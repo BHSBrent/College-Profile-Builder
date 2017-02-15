@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
-
+    
+    //Realm Variables
+    let realm = try! Realm()
+    lazy var colleges: Results<Colleges> = {
+        self.realm.objects(name.self)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,11 @@ class MasterViewController: UITableViewController {
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        }
+        
+        //Realm
+        for name in colleges {
+            objects.append(name)
         }
     }
 
@@ -56,13 +67,17 @@ class MasterViewController: UITableViewController {
             let nameField = alert.textFields![0] as UITextField
             let locationField = alert.textFields![1] as UITextField
             let attendanceField = alert.textFields![2] as UITextField
-            guard let image = UIImage(named: nameField.text!) else{
-            print("missing \(nameField.text!) image")
-            return }
+            guard let image = UIImage(named: nameField.text!) else  {
+                print("missing \(nameField.text!) image")
+                return
+            }
             if let population = Int(attendanceField.text!) {
-            let college = Colleges(name: nameField.text!, location: locationField.text!, attendance: population, logo: UIImagePNGRepresentation(image)!)
-            self.objects.append(college)
-            self.tableView.reloadData()
+                let college = Colleges(name: nameField.text!, location: locationField.text!, attendance: population, logo: UIImagePNGRepresentation(image)!)
+                self.objects.append(college)
+                self.tableView.reloadData()
+            }
+            try! self.realm.write {
+                self.realm.add(name)
             }
         }
         
@@ -75,7 +90,7 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if(segue.identifier == "showDetail")    {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = objects[indexPath.row] as! Colleges
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
@@ -110,10 +125,13 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+        if(editingStyle == .delete) {
+            let name = objects.remove(at: indexPath.row) as! Colleges
+            try! self.realm.write {
+                self.realm.delete(name)
+            }
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
+        }   else if(editingStyle == .insert)    {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }

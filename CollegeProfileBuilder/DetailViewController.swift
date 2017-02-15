@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
     
     func configureView() {
         if let Colleges = self.detailItem {
-            if nameField != nil {
+            if(nameField != nil)    {
                 nameField.text = Colleges.name
                 locationField.text = Colleges.location
                 attendanceField.text = String(Colleges.attendance)
