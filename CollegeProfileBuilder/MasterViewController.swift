@@ -38,9 +38,37 @@ class MasterViewController: UITableViewController {
     }
 
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        let alert = UIAlertController(title: "Add College", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "College"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Location"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Attendance"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        let insertAction = UIAlertAction(title: "Add", style: .default) { (action) in 
+            let nameField = alert.textFields![0] as UITextField
+            let locationField = alert.textFields![1] as UITextField
+            let attendanceField = alert.textFields![2] as UITextField
+            guard let image = UIImage(named: nameField.text!) else{
+            print("missing \(nameField.text!) image")
+            return }
+            if let population = Int(attendanceField.text!) {
+            let college = Colleges(name: nameField.text!, location: locationField.text!, attendance: population, logo: UIImagePNGRepresentation(image)!)
+            self.objects.append(college)
+            self.tableView.reloadData()
+            }
+        }
+        
+        alert.addAction(insertAction)
+        present(alert, animated: true, completion: nil)
+
+
     }
 
     // MARK: - Segues
