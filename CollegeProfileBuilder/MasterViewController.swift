@@ -17,7 +17,7 @@ class MasterViewController: UITableViewController {
     //Realm Variables
     let realm = try! Realm()
     lazy var colleges: Results<Colleges> = {
-        self.realm.objects(name.self)
+        self.realm.objects(Colleges.self)
     }()
 
     override func viewDidLoad() {
@@ -33,8 +33,8 @@ class MasterViewController: UITableViewController {
         }
         
         //Realm
-        for name in colleges {
-            objects.append(name)
+        for college in colleges {
+            objects.append(college)
         }
     }
 
@@ -75,9 +75,9 @@ class MasterViewController: UITableViewController {
                 let college = Colleges(name: nameField.text!, location: locationField.text!, attendance: population, logo: UIImagePNGRepresentation(image)!)
                 self.objects.append(college)
                 self.tableView.reloadData()
-            }
-            try! self.realm.write {
-                self.realm.add(name)
+                try! self.realm.write {
+                    self.realm.add(college)
+                }
             }
         }
         
@@ -126,9 +126,9 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete) {
-            let name = objects.remove(at: indexPath.row) as! Colleges
+            let college = objects.remove(at: indexPath.row) as! Colleges
             try! self.realm.write {
-                self.realm.delete(name)
+                self.realm.delete(college)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
         }   else if(editingStyle == .insert)    {

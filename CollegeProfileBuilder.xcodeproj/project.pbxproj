@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		61546F1F1E51FB52002F9369 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61546F1E1E51FB52002F9369 /* AppDelegate.swift */; };
-		61546F211E51FB52002F9369 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61546F201E51FB52002F9369 /* MasterViewController.swift */; };
 		61546F231E51FB52002F9369 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61546F221E51FB52002F9369 /* DetailViewController.swift */; };
 		61546F261E51FB52002F9369 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61546F241E51FB52002F9369 /* Main.storyboard */; };
 		61546F281E51FB52002F9369 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61546F271E51FB52002F9369 /* Assets.xcassets */; };
@@ -18,6 +17,7 @@
 		615ADED21E54B57000563F69 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 615ADECF1E54B57000563F69 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		615ADED31E54B57000563F69 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615ADED01E54B57000563F69 /* RealmSwift.framework */; };
 		615ADED41E54B57000563F69 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 615ADED01E54B57000563F69 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		615ADED61E54BD2D00563F69 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61546F201E51FB52002F9369 /* MasterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -169,8 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615ADED61E54BD2D00563F69 /* MasterViewController.swift in Sources */,
 				61546F231E51FB52002F9369 /* DetailViewController.swift in Sources */,
-				61546F211E51FB52002F9369 /* MasterViewController.swift in Sources */,
 				61546F1F1E51FB52002F9369 /* AppDelegate.swift in Sources */,
 				61546F331E520754002F9369 /* Colleges.swift in Sources */,
 			);
