@@ -99,7 +99,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         }   else    {
             if let collegeMap = self.detailItem{
                 try! realm.write({
-                    collegeMap.location = String(locationField.text!)!
+                    collegeMap.location = "\(String(nameField.text!)!), \(String(locationField.text!)!)"
                 })
                 let forward = segue.destination as! MapViewController
                 forward.title = "\(nameField.text)"
