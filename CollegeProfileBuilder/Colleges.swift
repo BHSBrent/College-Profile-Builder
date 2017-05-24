@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SafariServices
 
 class Colleges : Object {
     
@@ -15,12 +16,14 @@ class Colleges : Object {
     dynamic var location = String()
     dynamic var attendance = Int()
     dynamic var logo = Data()
+    dynamic var website = String()
     
-    convenience init(name: String, location: String, attendance: Int, logo: Data) {
+    convenience init(name: String, location: String, attendance: Int, logo: Data, website: String) {
         self.init()
         self.name = name
         self.location = location
         self.attendance = attendance
         self.logo = logo
+        self.website = website
     }
 }

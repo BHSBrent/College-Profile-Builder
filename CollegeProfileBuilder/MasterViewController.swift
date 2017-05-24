@@ -60,6 +60,9 @@ class MasterViewController: UITableViewController {
         alert.addTextField { (textField) in
             textField.placeholder = "Attendance"
         }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Website URL"
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         
@@ -67,17 +70,18 @@ class MasterViewController: UITableViewController {
             let nameField = alert.textFields![0] as UITextField
             let locationField = alert.textFields![1] as UITextField
             let attendanceField = alert.textFields![2] as UITextField
+            let urlField = alert.textFields![3] as UITextField
             guard let image = UIImage(named: nameField.text!) else  {
                 print("missing \(nameField.text!) image")
                 return
             }
             if let population = Int(attendanceField.text!) {
-                let college = Colleges(name: nameField.text!, location: locationField.text!, attendance: population, logo: UIImagePNGRepresentation(image)!)
+                let college = Colleges(name: nameField.text!, location: locationField.text!, attendance: population, logo: UIImagePNGRepresentation(image)!, website: urlField.text!)
                 self.objects.append(college)
-                self.tableView.reloadData()
                 try! self.realm.write {
                     self.realm.add(college)
                 }
+                self.tableView.reloadData()
             }
         }
         
